@@ -6,7 +6,6 @@ export const byteSubstitute = (block) => {
             block[y][x] = sbox[block[y][x]];
         }
     }
-    console.log("first")
     return block;
 }
 
