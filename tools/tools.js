@@ -28,6 +28,7 @@ let hex = textToHexa("codingisawesomex");
 let sli = slicer(hex, 2)
 
 const matrixConstructor = (hex) => {
+    console.log(hex)
     let matrix = Array.from({ length: 4 }, () => Array(4).fill(0))
     let slicedIndex = 0;
     for (let x = 0; x < matrix.length; x++) {
