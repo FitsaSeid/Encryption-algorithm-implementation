@@ -11,6 +11,7 @@ const hexaToBinary = (hexa) => {
     return (parseInt(hexa, 16).toString(2)).padStart(8, '0');
 }
 
+// console.log(hexaToBinary("01") + hexaToBinary("01"))
 const slicer = (text, n) => {
     let length = text.length;
     let flag = 0;
