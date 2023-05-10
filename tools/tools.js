@@ -7,11 +7,28 @@ const textToHexa = (text) => {
     return arr1.join('');
 }
 
-const hexaToBinary = (hexa) => {
-    return (parseInt(hexa, 16).toString(2)).padStart(8, '0');
+// const hexaToBinary = (hexa) => {
+//     return (parseInt(hexa, 16).toString(2)).padStart(8, '0');
+// }
+const hexaToBinary = (hex)  => {
+    let binString = "";
+    for (let i = 0; i < hex.length; i++) {
+      let bin = parseInt(hex[i], 16).toString(2);
+      binString += "0000".substr(bin.length) + bin;
+    }
+    return binString;
 }
 
-console.log(hexaToBinary("fb"))
+console.log(hexaToBinary("fbfb"))
+
+
+const binaryToHexa = (binary) =>{
+    return parseInt(binary, 2).toString(16).toUpperCase();
+}
+
+console.log(binaryToHexa("1111101111111011"))
+
+
 const slicer = (text, n) => {
     let length = text.length;
     let flag = 0;
@@ -43,6 +60,8 @@ const matrixConstructor = (txt, isHex) => {
             slicedIndex++;
         }
     }
+    // console.log(txt)
+    // console.log(matrix)
     return matrix;
 }
 
@@ -101,4 +120,8 @@ const polynomialMultiplication = (hex1, hex2) => {
 
 polynomialMultiplication("fb", "02");
 
-export { textToHexa, hexaToBinary, matrixConstructor, slicer }
+export { textToHexa, hexaToBinary,binaryToHexa, matrixConstructor, slicer }
+
+
+
+
