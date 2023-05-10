@@ -7,13 +7,22 @@ const textToHexa = (text) => {
     return arr1.join('');
 }
 
-const hexaToBinary = (hexa) => {
-    return (parseInt(hexa, 16).toString(2)).padStart(8, '0');
+// const hexaToBinary = (hexa) => {
+//     return (parseInt(hexa, 16).toString(2)).padStart(8, '0');
+// }
+const hexaToBinary = (hex)  => {
+    let binString = "";
+    for (let i = 0; i < hex.length; i++) {
+      let bin = parseInt(hex[i], 16).toString(2);
+      binString += "0000".substr(bin.length) + bin;
+    }
+    return binString;
 }
 
-console.log(hexaToBinary("fb"))
+console.log(hexaToBinary("fbfb"))
 
-const binaryToHexa = (binary) => {
+
+const binaryToHexa = (binary) =>{
     return parseInt(binary, 2).toString(16).toUpperCase();
 }
 
@@ -46,6 +55,8 @@ const matrixConstructor = (txt, isHex) => {
             slicedIndex++;
         }
     }
+    // console.log(txt)
+    // console.log(matrix)
     return matrix;
 }
 
@@ -141,6 +152,5 @@ const xor = (binaryOne, binaryTwo) => {
     }
 }
 
+export { textToHexa, hexaToBinary,binaryToHexa, matrixConstructor, slice
 
-matrixMultiplication(matrix1, matrix2);
-export { textToHexa, hexaToBinary, matrixConstructor, slicer }
