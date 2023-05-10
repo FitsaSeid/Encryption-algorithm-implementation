@@ -16,6 +16,9 @@ const hexaToBinary = (hex) => {
     return binString;
 }
 
+console.log(hexaToBinary("fbfb"))
+
+
 const binaryToHexa = (binary) => {
     return parseInt(binary, 2).toString(16).toUpperCase();
 }
@@ -49,6 +52,8 @@ const matrixConstructor = (txt, isHex) => {
             slicedIndex++;
         }
     }
+    // console.log(txt)
+    // console.log(matrix)
     return matrix;
 }
 
@@ -69,6 +74,5 @@ const xor = (binaryOne, binaryTwo) => {
         return result
     }
 }
-
 
 export { textToHexa, hexaToBinary, matrixConstructor, slicer, xor, binaryToHexa }
