@@ -4,7 +4,7 @@ import { shiftingRow } from "./shifting-rows/shiftingRows.js";
 import { mixingColumn } from "./mixing-column/mixingColumn.js";
 const plainText = "codingisawesomex";
 
-let block = matrixConstructor(slicer(textToHexa(plainText), 2));
-// let subPlain = byteSubstitute(block);
-// let shiftedMatrix = shiftingRow(subPlain)
-// mixingColumn(shiftedMatrix)
+let block = matrixConstructor(plainText, false);
+let subPlain = byteSubstitute(block);
+let shiftedMatrix = shiftingRow(subPlain)
+mixingColumn(shiftedMatrix)
