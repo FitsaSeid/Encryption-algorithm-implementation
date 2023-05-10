@@ -54,11 +54,6 @@ const matrixConstructor = (txt, isHex) => {
 
 matrixConstructor("codingisawesomex", false)
 
-
-
-
-
-
 const xor = (binaryOne, binaryTwo) => {
     let result = "";
     if (binaryOne === "0") {
