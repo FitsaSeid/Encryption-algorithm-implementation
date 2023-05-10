@@ -32,3 +32,4 @@ export const roundConstant = {
 }
 
 export const matrixMultiplierConstant = "02010103030201010103020101010302"
+export const constantMatrix = [["02", "03", "01", "02"], ["01", "02", "03", "01"], ["01", "01", "02", "03"], ["03", "01", "01", "02"]]
