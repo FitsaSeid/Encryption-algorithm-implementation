@@ -16,12 +16,11 @@ const hexaToBinary = (hex) => {
     return binString;
 }
 
-console.log(hexaToBinary("fbfb"))
-
-
 const binaryToHexa = (binary) => {
-    return parseInt(binary, 2).toString(16).toUpperCase();
+    return parseInt(binary, 2).toString(16).toLowerCase();
 }
+
+console.log(textToHexa("codinf"))
 
 const slicer = (text, n) => {
     let length = text.length;
@@ -52,8 +51,6 @@ const matrixConstructor = (txt, isHex) => {
             slicedIndex++;
         }
     }
-    // console.log(txt)
-    // console.log(matrix)
     return matrix;
 }
 
