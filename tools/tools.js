@@ -15,18 +15,24 @@ const hexaToBinary = (hex) => {
     }
     return binString;
 }
-console.log(hexaToBinary("0E"))
+
 const binaryToHexa = (binary) => {
     let hexa = ""
-    if (parseInt(binary, 2).toString(16).toLowerCase().length === 1) {
-        hexa = "0" + parseInt(binary, 2).toString(16).toLowerCase();
-    } else {
-        hexa = parseInt(binary, 2).toString(16).toLowerCase();
-    }
-    return hexa
+    hexa = parseInt(binary, 2).toString(16).toLowerCase();
+    // while (hexa.length < 8) {
+    //     hexa = "0" + hexa;
+    // }
+    return hexa.length % 2 ? '0' + hexa : hexa;
 }
-console.log(binaryToHexa("00001110"))
-console.log(textToHexa("Thats my Kung Fu"))
+
+const binaryToHexa2 = (binary) => {
+    let hexa = ""
+    hexa = parseInt(binary, 2).toString(16).toLowerCase();
+    while (hexa.length < 8) {
+        hexa = "0" + hexa;
+    }
+    return hexa.length % 2 ? '0' + hexa : hexa;
+}
 
 const slicer = (text, n) => {
     let length = text.length;
@@ -77,5 +83,16 @@ const xor = (binaryOne, binaryTwo) => {
         return result
     }
 }
+const xors = (first, second) => {
+    let result = "";
+    for (let x = 0; x < first.length; x++) {
+        if (first.charAt(x) === second.charAt(x))
+            result += "0";
+        else
+            result += "1";
+    }
+    return result;
 
-export { textToHexa, hexaToBinary, matrixConstructor, slicer, xor, binaryToHexa }
+}
+
+export { textToHexa, hexaToBinary, matrixConstructor, slicer, xor, binaryToHexa, binaryToHexa2 }

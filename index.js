@@ -1,5 +1,5 @@
 import { byteSubstitute } from "./byte-substitution/byteSubstitution.js";
-import { textToHexa, hexaToBinary, matrixConstructor, slicer } from './tools/tools.js';
+import { textToHexa, hexaToBinary, matrixConstructor, slicer, xor, binaryToHexa, binaryToHexa2 } from './tools/tools.js';
 import { shiftingRow } from "./shifting-rows/shiftingRows.js";
 import { matrixMultiplication } from "./mixing-column/mixingColumn.js";
 import { sbox, constantMatrix, inverseConstantMatrix } from "./tools/sbox.js";
@@ -9,6 +9,62 @@ const plainText = "codingisawesomex";
 // let block = matrixConstructor(plainText, false);
 // let subPlain = byteSubstitute(block);
 // let shiftedMatrix = shiftingRow(subPlain)
-console.log();
-keyExpansion(textToHexa("hellobahirdarcty"))
+let encryptionKey = keyExpansion(textToHexa("Thats my Kung Fu"));
+let keyMatrix = matrixConstructor("Thats my Kung Fu", false);
+let round0Key = '';
+for (let x = 0; x < 4; x++) {
+    for (let y = 0; y < 4; y++) {
+        round0Key += keyMatrix[y][x];
+    }
+}
 // console.log(matrixMultiplication(shiftedMatrix, constantMatrix))
+
+let hexaPlainText = textToHexa(plainText);
+let firstRound = xor(hexaToBinary(hexaPlainText), hexaToBinary(round0Key));
+let i = 0;
+hexaPlainText = '';
+while (i <= 96) {
+    hexaPlainText += binaryToHexa2(firstRound.slice(i, i + 32));
+    i += 32;
+}
+
+
+let x = 0;
+const encrypt = (hexaPlainText) => {
+
+    let block = matrixConstructor(hexaPlainText, false);
+    let subPlain = byteSubstitute(block);
+    let shiftedMatrix = shiftingRow(subPlain);
+    let text = '';
+    if (x === 9) {
+        for (let x = 0; x < 4; x++) {
+            for (let y = 0; y < 4; y++) {
+                text += shiftedMatrix[y][x];
+            }
+        }
+    } else {
+        let mixingColum = matrixMultiplication(shiftedMatrix, constantMatrix);
+
+        for (let x = 0; x < 4; x++) {
+            for (let y = 0; y < 4; y++) {
+                text += mixingColum[y][x];
+            }
+        }
+    }
+    text = xor(hexaToBinary(encryptionKey[x]), hexaToBinary(text));
+    let encryptedText = ''
+    let i = 0;
+    while (i <= 96) {
+        encryptedText += binaryToHexa2(text.slice(i, i + 32))
+        i += 32
+    }
+    // console.log("Enc : " + encryptedText)
+    if (x === 9)
+        return encryptedText;
+    else {
+        x++;
+        return encrypt(encryptedText);
+    }
+}
+console.log(encrypt(hexaPlainText));
+// encrypt(hexaPlainText)
