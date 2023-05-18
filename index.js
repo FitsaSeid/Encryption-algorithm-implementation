@@ -9,5 +9,6 @@ const plainText = "codingisawesomex";
 // let block = matrixConstructor(plainText, false);
 // let subPlain = byteSubstitute(block);
 // let shiftedMatrix = shiftingRow(subPlain)
-keyExpansion("codingisawesomex");
+console.log();
+keyExpansion(textToHexa("hellobahirdarcty"))
 // console.log(matrixMultiplication(shiftedMatrix, constantMatrix))

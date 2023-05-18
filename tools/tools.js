@@ -15,12 +15,18 @@ const hexaToBinary = (hex) => {
     }
     return binString;
 }
-
+console.log(hexaToBinary("0E"))
 const binaryToHexa = (binary) => {
-    return parseInt(binary, 2).toString(16).toLowerCase();
+    let hexa = ""
+    if (parseInt(binary, 2).toString(16).toLowerCase().length === 1) {
+        hexa = "0" + parseInt(binary, 2).toString(16).toLowerCase();
+    } else {
+        hexa = parseInt(binary, 2).toString(16).toLowerCase();
+    }
+    return hexa
 }
-
-console.log(textToHexa("codinf"))
+console.log(binaryToHexa("00001110"))
+console.log(textToHexa("Thats my Kung Fu"))
 
 const slicer = (text, n) => {
     let length = text.length;
