@@ -1,44 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>AES</title>
-    <link rel="stylesheet" href="./main.css" />
-  </head>
 
-  <body>
-    <header>
-      <h2>Computer Security</h2>
-      <h4>Advanced Encryption Standard</h4>
-    </header>
+<head>
+  <title>AES</title>
+  <link rel="stylesheet" href="./main.css" />
+</head>
 
-    <div class="main">
-      <h5 class="title"></h5>
-      <div class="output"></div>
-      <div class="inputs">
-        <h5 class="error"></h5>
-        <form action="">
-          <input type="text" placeholder="Plain Text" id="plaintext" />
-          <input type="text" placeholder="Encryption Key" id="encKey" />
-          <button id="encBtn">Encrypt</button>
-        </form>
-        <form action="">
-          <input
-            type="text"
-            placeholder="Cipher Text"
-            id="ciphertext"
-            required
-          />
-          <input
-            type="text"
-            placeholder="Decryption Key"
-            id="decKey"
-            required
-          />
-          <button id="decBtn">Decrypt</button>
-        </form>
-      </div>
+<body>
+  <header>
+    <h2>Computer Security</h2>
+    <h4>Advanced Encryption Standard</h4>
+  </header>
+
+  <div class="main">
+    <h5 class="title"></h5>
+    <div class="output"></div>
+    <div class="inputs">
+      <h6 class="error"></h6>
+      <form action="">
+        <input type="text" placeholder="Plain Text" id="plaintext" />
+        <input type="text" placeholder="Encryption Key" id="encKey" />
+        <button id="encBtn">Encrypt</button>
+      </form>
+      <form action="">
+        <input type="text" placeholder="Cipher Text" id="ciphertext" required />
+        <input type="text" placeholder="Decryption Key" id="decKey" required />
+        <button id="decBtn">Decrypt</button>
+      </form>
     </div>
-    <script src="./index.js" type="module"></script>
-    <script src="./decryption/index.js" type="module"></script>
-  </body>
+  </div>
+
+  <div class="teams">
+    <h3>Group Members</h3>
+    <table>
+      <thead>
+        <th></th>
+        <th>Name</th>
+        <th>ID</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td></td>
+          <td>Fitsum Seid</td>
+          <td>1208664</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>Mahlet Yimenu</td>
+          <td>1208964</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>Habtamu Kassahun</td>
+          <td>1208698</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>Hailemariam Yaregal</td>
+          <td>1208709</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>Birhan Ayalew</td>
+          <td>1208906</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>Daniel Limenih</td>
+          <td>1208907</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <script src="./index.js" type="module"></script>
+  <script src="./decryption/index.js" type="module"></script>
+</body>
+
 </html>

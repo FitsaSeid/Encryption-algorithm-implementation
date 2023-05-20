@@ -22,7 +22,8 @@ header {
     width: 100%;
 }
 
-.inputs, .output {
+.inputs,
+.output {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -37,12 +38,14 @@ header {
     margin: 0 auto;
     padding: 10px;
 }
+
 .title {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 5% auto 10px auto;
 }
+
 .inputs input,
 button {
     padding: 10px;
@@ -51,4 +54,9 @@ button {
 
 .error {
     color: red;
+}
+
+.teams {
+    position: absolute;
+    bottom: 20px;
 }

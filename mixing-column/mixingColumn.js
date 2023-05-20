@@ -127,14 +127,12 @@ function bytesToHex(bytes) {
 
 export const matrixMultiplication = (inputMatrix, constantMatrix) => {
     let result = Array.from({ length: 4 }, () => Array(4).fill(0))
-    // console.log(inputMatrix)
-    // console.log(constantMatrix)
+
     for (let i = 0; i < inputMatrix.length; i++) {
         for (let j = 0; j < inputMatrix.length; j++) {
             result[j][i] = "0";
             for (let k = 0; k < constantMatrix.length; k++) {
                 result[j][i] = xors(result[j][i], hexaToBinary(hexMultiplyGF(constantMatrix[j][k], inputMatrix[k][i])), k);
-                // console.log(result)
             }
         }
     }
@@ -146,10 +144,7 @@ export const matrixMultiplication = (inputMatrix, constantMatrix) => {
                 result[y][x] = binaryToHexa(result[y][x])
         }
     }
-
-    // console.log("result>>> " + result)
     return result;
 }
 
-// console.log("Mul: " + matrixMultiplication(matrixConstructor("876e46a6f24ce78c4d904ad897ecc395", true), constantMatrix))
 

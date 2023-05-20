@@ -2,7 +2,7 @@ const textToHexa = (text) => {
     let arr1 = [];
     for (let x = 0; x < text.length; x++) {
         let hex = Number(text.charCodeAt(x)).toString(16);
-        hex.length % 2 ? hex = '0'+hex : hex;
+        hex.length % 2 ? hex = '0' + hex : hex;
         arr1.push(hex);
     }
     return arr1.join('');
