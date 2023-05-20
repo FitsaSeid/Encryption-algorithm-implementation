@@ -37,6 +37,7 @@ header {
     background-color: #fff;
     margin: 0 auto;
     padding: 10px;
+    box-shadow: 1px 5px 8px 10px #444444;
 }
 
 .title {
