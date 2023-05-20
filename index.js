@@ -5,20 +5,17 @@ import { matrixMultiplication } from "./mixing-column/mixingColumn.js";
 import { sbox, constantMatrix, inverseConstantMatrix } from "./tools/sbox.js";
 import { keyExpansion } from "./key expansion/keyExpansion.js";
 
-let btn = document.getElementById("encBtn");
+const btn = document.getElementById("encBtn");
 
 btn.addEventListener('click', (e) => {
     e.preventDefault();
-
-
     const plainText = document.getElementById("plaintext").value;
-    console.log(textToHexa(plainText))
+    // console.log(textToHexa(plainText))
     let KEY = document.getElementById("encKey").value;
-    console.log(KEY)
-    console.log(plainText)
     let encryptionKey = keyExpansion(textToHexa(KEY));
     let round0Key = textToHexa(KEY);
-
+    console.log(textToHexa(KEY))
+    console.log(textToHexa(plainText))
     let hexaPlainText = textToHexa(plainText);
     let firstRound = xor(hexaToBinary(hexaPlainText), hexaToBinary(round0Key));
     let i = 0;
@@ -68,5 +65,5 @@ btn.addEventListener('click', (e) => {
         }
     }
     console.log(encrypt(hexaPlainText));
+    // encrypt(hexaPlainText)
 })
-// encrypt(hexaPlainText)
