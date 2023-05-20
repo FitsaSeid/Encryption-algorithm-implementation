@@ -74,7 +74,7 @@ const hexToString = (hex) => {
     }
     return string;
 }
-
+console.log(hexToString("6a4e988b59489e3dcb1230f4bda09c9b"))
 const xor = (binaryOne, binaryTwo) => {
     let result = "";
     if (binaryOne === "0") {
