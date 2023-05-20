@@ -15,7 +15,7 @@ const hexaToBinary = (hex) => {
     }
     return binString;
 }
-
+console.log("53398e5d430693f84f0a3b95855257bd".length)
 const binaryToHexa = (binary) => {
     let hexa = ""
     hexa = parseInt(binary, 2).toString(16).toLowerCase();
@@ -66,7 +66,14 @@ const matrixConstructor = (txt, isHex) => {
     return matrix;
 }
 
-matrixConstructor("codingisawesomex", false)
+// console.log(matrixConstructor("53398e5d430693f84f0a3b95855257bd", true))
+const hexToString = (hex) => {
+    var string = '';
+    for (var i = 0; i < hex.length; i += 2) {
+        string += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
+    }
+    return string;
+}
 
 const xor = (binaryOne, binaryTwo) => {
     let result = "";
@@ -83,16 +90,19 @@ const xor = (binaryOne, binaryTwo) => {
         return result
     }
 }
-const xors = (first, second) => {
-    let result = "";
-    for (let x = 0; x < first.length; x++) {
-        if (first.charAt(x) === second.charAt(x))
-            result += "0";
-        else
-            result += "1";
+const xors = (first, second, flag) => {
+    if (flag === 0)
+        return second
+    else {
+        let result = "";
+        for (let x = 0; x < first.length; x++) {
+            if (first.charAt(x) === second.charAt(x))
+                result += "0";
+            else
+                result += "1";
+        }
+        return result;
     }
-    return result;
-
 }
 
-export { textToHexa, hexaToBinary, matrixConstructor, slicer, xor, binaryToHexa, binaryToHexa2 }
+export { textToHexa, hexaToBinary, matrixConstructor, slicer, xor, binaryToHexa, binaryToHexa2, xors, hexToString }
