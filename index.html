@@ -1,34 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <title>AES</title>
-    <link rel="stylesheet" href="./main.css">
-</head>
+    <link rel="stylesheet" href="./main.css" />
+  </head>
 
-<body>
+  <body>
     <header>
-        <h2>Computer Security</h2>
-        <h4>Advanced Encryption Standard</h4>
+      <h2>Computer Security</h2>
+      <h4>Advanced Encryption Standard</h4>
     </header>
 
     <div class="main">
-        <div class="inputs">
-            <form action="">
-                <input type="text" placeholder="Plain Text" id="plaintext">
-                <input type="text" placeholder="Encryption Key" id="encKey">
-                <button id="encBtn">Encrypt</button>
-            </form>
-            <form action="">
-                <input type="text" placeholder="Cipher Text" id="ciphertext" required>
-                <input type="text" placeholder="Decryption Key" id="decKey" required>
-                <button id="decBtn">Decrypt</button>
-            </form>
-        </div>
+      <h5 class="title"></h5>
+      <div class="output"></div>
+      <div class="inputs">
+        <h5 class="error"></h5>
+        <form action="">
+          <input type="text" placeholder="Plain Text" id="plaintext" />
+          <input type="text" placeholder="Encryption Key" id="encKey" />
+          <button id="encBtn">Encrypt</button>
+        </form>
+        <form action="">
+          <input
+            type="text"
+            placeholder="Cipher Text"
+            id="ciphertext"
+            required
+          />
+          <input
+            type="text"
+            placeholder="Decryption Key"
+            id="decKey"
+            required
+          />
+          <button id="decBtn">Decrypt</button>
+        </form>
+      </div>
     </div>
     <script src="./index.js" type="module"></script>
     <script src="./decryption/index.js" type="module"></script>
-
-</body>
-
+  </body>
 </html>

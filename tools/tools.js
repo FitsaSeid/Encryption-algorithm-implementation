@@ -2,6 +2,7 @@ const textToHexa = (text) => {
     let arr1 = [];
     for (let x = 0; x < text.length; x++) {
         let hex = Number(text.charCodeAt(x)).toString(16);
+        hex.length % 2 ? hex = '0'+hex : hex;
         arr1.push(hex);
     }
     return arr1.join('');
@@ -15,7 +16,6 @@ const hexaToBinary = (hex) => {
     }
     return binString;
 }
-console.log("53398e5d430693f84f0a3b95855257bd".length)
 const binaryToHexa = (binary) => {
     let hexa = ""
     hexa = parseInt(binary, 2).toString(16).toLowerCase();
@@ -66,7 +66,6 @@ const matrixConstructor = (txt, isHex) => {
     return matrix;
 }
 
-// console.log(matrixConstructor("53398e5d430693f84f0a3b95855257bd", true))
 const hexToString = (hex) => {
     var string = '';
     for (var i = 0; i < hex.length; i += 2) {
@@ -90,6 +89,7 @@ const xor = (binaryOne, binaryTwo) => {
         return result
     }
 }
+
 const xors = (first, second, flag) => {
     if (flag === 0)
         return second
