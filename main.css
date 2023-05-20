@@ -22,16 +22,33 @@ header {
     width: 100%;
 }
 
-.inputs {
+.inputs, .output {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 10%;
+    margin-top: 5%;
 }
 
+.output {
+    width: 40%;
+    height: 100px;
+    background-color: #fff;
+    margin: 0 auto;
+    padding: 10px;
+}
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5% auto 10px auto;
+}
 .inputs input,
 button {
     padding: 10px;
     margin: 5px;
+}
+
+.error {
+    color: red;
 }

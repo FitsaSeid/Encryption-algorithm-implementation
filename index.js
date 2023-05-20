@@ -1,5 +1,5 @@
 import { byteSubstitute } from "./byte-substitution/byteSubstitution.js";
-import { textToHexa, hexaToBinary, matrixConstructor, slicer, xor, binaryToHexa, binaryToHexa2 } from './tools/tools.js';
+import { textToHexa, hexaToBinary, matrixConstructor, slicer, xor, binaryToHexa, binaryToHexa2, hexToString } from './tools/tools.js';
 import { shiftingRow } from "./shifting-rows/shiftingRows.js";
 import { matrixMultiplication } from "./mixing-column/mixingColumn.js";
 import { sbox, constantMatrix, inverseConstantMatrix } from "./tools/sbox.js";
@@ -9,13 +9,28 @@ const btn = document.getElementById("encBtn");
 
 btn.addEventListener('click', (e) => {
     e.preventDefault();
-    const plainText = document.getElementById("plaintext").value;
-    // console.log(textToHexa(plainText))
+    const plainTxt = document.getElementById("plaintext").value;
     let KEY = document.getElementById("encKey").value;
+    let cipherText = ''
+
+    if(KEY.length < 16){
+        document.getElementsByClassName("error")[0].innerHTML = "Encryption key must be 128 bit or 16 character";
+    } else { 
+        document.getElementsByClassName("error")[0].innerHTML = "";
+        
     let encryptionKey = keyExpansion(textToHexa(KEY));
+
+    let text = slicer(plainTxt, 16);
+    let filler = 16 - text[text.length-1].length;
+    if(filler > 0) {
+        for(let x = 0; x < filler; x++) {
+            text[text.length - 1] += ' ';
+        }
+    }
+    
+    text.map(plainText => {
+
     let round0Key = textToHexa(KEY);
-    console.log(textToHexa(KEY))
-    console.log(textToHexa(plainText))
     let hexaPlainText = textToHexa(plainText);
     let firstRound = xor(hexaToBinary(hexaPlainText), hexaToBinary(round0Key));
     let i = 0;
@@ -24,15 +39,14 @@ btn.addEventListener('click', (e) => {
         hexaPlainText += binaryToHexa2(firstRound.slice(i, i + 32));
         i += 32;
     }
-    console.log(hexaPlainText)
+    // console.log(hexaPlainText)
 
     let x = 0;
     const encrypt = (hexaPlainText) => {
-        console.log(hexaPlainText)
         let block = matrixConstructor(hexaPlainText, true);
         let subPlain = byteSubstitute(block);
-        console.log(subPlain)
         let shiftedMatrix = shiftingRow(subPlain);
+
         let text = '';
         if (x === 9) {
             for (let x = 0; x < 4; x++) {
@@ -56,7 +70,7 @@ btn.addEventListener('click', (e) => {
             encryptedText += binaryToHexa2(text.slice(i, i + 32))
             i += 32
         }
-        console.log("Enc : " + encryptedText)
+        // console.log("Enc : " + encryptedText)
         if (x === 9)
             return encryptedText;
         else {
@@ -64,6 +78,13 @@ btn.addEventListener('click', (e) => {
             return encrypt(encryptedText);
         }
     }
-    console.log(encrypt(hexaPlainText));
-    // encrypt(hexaPlainText)
+    cipherText += encrypt(hexaPlainText)
+
+})
+}
+// console.log(cipherText)
+let title = document.getElementsByClassName("title")[0];
+title.innerHTML = "Cipher Text"
+let op = document.getElementsByClassName("output")[0];
+op.innerHTML = hexToString(cipherText)
 })
